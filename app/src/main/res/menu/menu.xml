@@ -8,10 +8,4 @@
         android:icon="@drawable/ic_action_add"
         app:showAsAction="ifRoom"
         />
-    <item
-        android:id="@+id/action_rem"
-        android:title="Remover"
-        android:icon="@drawable/ic_action_rem"
-        app:showAsAction="ifRoom"
-        />
 </menu>

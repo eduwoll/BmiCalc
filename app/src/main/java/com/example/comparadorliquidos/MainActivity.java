@@ -1,5 +1,6 @@
 package com.example.comparadorliquidos;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -10,66 +11,49 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
-    EditText edtToast;
-    EditText edtValor;
+    EditText edtNome;
+    EditText edtMl;
+    EditText edtRs;
     Button btnToast;
-//    SeekBar seekAvaliacao;
-//    RatingBar rtbAvaliavao;
+    private Button btnA;
+    
+    ArrayList<Liquido> liquidos = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        edtToast = findViewById(R.id.edtToast);
-        edtValor = findViewById(R.id.edtValor);
-        btnToast = findViewById(R.id.btnToast);
-//        rtbAvaliavao = findViewById(R.id.rtbAvaliavao);
-//        seekAvaliacao = findViewById(R.id.seekAvaliacao);
-
-
-//        seekAvaliacao.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-//
-//            int valor=0;
-//            @Override
-//            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-//                valor=progress;
-//                criarToast(Integer.valueOf(valor).toString());
-//            }
-//
-//            @Override
-//            public void onStartTrackingTouch(SeekBar seekBar) {
-//                edtToast.setText(Integer.valueOf(valor).toString());
-//            }
-//
-//            @Override
-//            public void onStopTrackingTouch(SeekBar seekBar) {
-//                edtToast.setText(Integer.valueOf(valor).toString());
-//
-//            }
-//        });
-
+        edtNome =  findViewById(R.id.edtNome);
+        edtMl = findViewById(R.id.edtMl);
+        edtRs = findViewById(R.id.edtRs);
+        btnToast = findViewById(R.id.btnCalcular);
 
         btnToast.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (edtToast.length()!=0) {
-                    Toast.makeText(MainActivity.this, edtToast.getText().toString(), Toast.LENGTH_LONG).show();
-                } else{
-                    criarToast("Preencha o campo");
+                Liquido maisBarato = null;
+                for (Liquido l: liquidos) {
+                    if(maisBarato == null || l.calculaResultado() > maisBarato.calculaResultado()){
+                        maisBarato = l;
+                    }
                 }
-
+                if(maisBarato != null){
+                    Intent it = new Intent(getBaseContext(), msgActivity.class);
+                    it.putExtra("maisBarato",maisBarato.getNome());
+                    it.putExtra("volume",maisBarato.getVolume().toString());
+                    it.putExtra("preco",maisBarato.getPreco().toString());
+                    Float calculo = maisBarato.calculaResultado();
+                    it.putExtra("calculo",calculo.toString());
+                    startActivity(it);
+                }else{
+                    criarToast("Nenhum líquido adicionado");
+                }
             }
         });
-
-
-//        rtbAvaliavao.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-//            @Override
-//            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-//                criarToast(Float.toString(rating));
-//            }
-//        });
-
     }
 
     public void criarToast(String texto){
@@ -86,15 +70,20 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id =item.getItemId();
-        if(id == R.id.action_add){
-            criarToast("Botão add clicado");
+        if(id == R.id.action_add) {
+            if (edtMl.length() != 0 && edtRs.length() != 0 && Float.parseFloat(edtRs.getText().toString()) > 0) {
+                liquidos.add(new Liquido(edtNome.getText().toString(), Float.parseFloat(edtMl.getText().toString()), Float.parseFloat(edtRs.getText().toString())));
+                criarToast("Adicionado!");
+                //Limpar Campos
+                edtNome.setText(null);
+                edtMl.setText(null);
+                edtRs.setText(null);
+            }else{
+                criarToast("Preencha os campos");
+            }
         }
-
-        if(id == R.id.action_rem){
-            criarToast("Botão rem clicado");
-        }
+        
         return true;
-
-
     }
 }
+
