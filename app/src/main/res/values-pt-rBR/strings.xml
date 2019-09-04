@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ComparadorLiquidos</string>
-    <string name="nome">nome</string>
-</resources>
+    <string name="app_name">Comparador de Líquidos</string>
+    <string name="action_settings">Configurações</string>
+    <string name="liquid_name">Nome do Líquido</string>
+    <string name="liquid_qtd">Quantidade do Líqudo</string>
+    <string name="liquid_val">Valor do Líquido</string>
+    <string name="title_activity_msg">Resultado</string>
+    <string name="name">Nome</string>
+    <string name="calculate">Calcular</string>
+    <string name="added">Adicionado</string>
+    <string name="fill">Por favor, preencha todos os campos</string>
+    <string name="no_liquid_added">Nenhum líquido adicionado</string>
+    <string name="loading">Carregando</string>
+    <string name="cheapest">O Líquido mais barato é</string>
+    <string name="value">com o valor de</string>
+    </resources>

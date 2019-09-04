@@ -1,6 +1,16 @@
 <resources>
-    <string name="app_name">ComparadorLiquidos</string>
+    <string name="app_name">Liquid Comparator</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_msg">msgActivity</string>
-    <string name="nome">name</string>
+    <string name="liquid_name">Liquid Name</string>
+    <string name="liquid_qtd">Liquid Quantity</string>
+    <string name="liquid_val">Liquid Value</string>
+    <string name="title_activity_msg">Result</string>
+    <string name="name">Name</string>
+    <string name="calculate">Calculate</string>>
+    <string name="added">Added</string>
+    <string name="fill">Please, fill in all fields</string>
+    <string name="no_liquid_added">No liquid was added</string>
+    <string name="loading">Loading</string>
+    <string name="cheapest">The cheapest liquid is</string>
+    <string name="value">with the value of</string>
 </resources>

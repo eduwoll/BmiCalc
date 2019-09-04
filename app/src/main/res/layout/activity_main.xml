@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:orientation="vertical">
 
     <EditText
         android:id="@+id/edtNome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:contentDescription="Nome do Liquido"
-        android:hint="Nome"
+        android:hint="@string/name"
         android:inputType="text"
         android:padding="16dp" />
 
@@ -20,7 +18,6 @@
         android:id="@+id/edtMl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:contentDescription="Quantidade do Liquido"
         android:hint="mL"
         android:inputType="numberDecimal"
         android:padding="16dp" />
@@ -29,18 +26,18 @@
         android:id="@+id/edtRs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:contentDescription="Valor do Liquido"
         android:hint="R$"
         android:inputType="numberDecimal"
         android:padding="16dp" />
 
     <Button
         android:id="@+id/btnCalcular"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="150dp"
-        android:layout_marginRight="150dp"
-        android:text="Calcular"
+        android:contentDescription="@string/calculate"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/calculate"
         android:textAlignment="center" />
 
 </LinearLayout>

@@ -19,9 +19,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".msgActivity"
-            android:label="msgActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:name=".MsgActivity"
+            android:parentActivityName=".MainActivity"
+            android:label="@string/title_activity_msg" />
     </application>
 
 </manifest>

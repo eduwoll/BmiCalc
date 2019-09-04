@@ -19,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
     EditText edtMl;
     EditText edtRs;
     Button btnToast;
-    private Button btnA;
     
     ArrayList<Liquido> liquidos = new ArrayList<>();
 
@@ -42,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
                 if(maisBarato != null){
-                    Intent it = new Intent(getBaseContext(), msgActivity.class);
+                    Intent it = new Intent(getBaseContext(), MsgActivity.class);
                     it.putExtra("maisBarato",maisBarato.getNome());
                     it.putExtra("volume",maisBarato.getVolume().toString());
                     it.putExtra("preco",maisBarato.getPreco().toString());
@@ -50,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                     it.putExtra("calculo",calculo.toString());
                     startActivity(it);
                 }else{
-                    criarToast("Nenhum líquido adicionado");
+                    criarToast(getResources().getString(R.string.no_liquid_added));
                 }
             }
         });
@@ -73,13 +72,13 @@ public class MainActivity extends AppCompatActivity {
         if(id == R.id.action_add) {
             if (edtMl.length() != 0 && edtRs.length() != 0 && Float.parseFloat(edtRs.getText().toString()) > 0) {
                 liquidos.add(new Liquido(edtNome.getText().toString(), Float.parseFloat(edtMl.getText().toString()), Float.parseFloat(edtRs.getText().toString())));
-                criarToast("Adicionado!");
+                criarToast(getResources().getString(R.string.added));
                 //Limpar Campos
                 edtNome.setText(null);
                 edtMl.setText(null);
                 edtRs.setText(null);
             }else{
-                criarToast("Preencha os campos");
+                criarToast(getResources().getString(R.string.fill));
             }
         }
         
